@@ -7,6 +7,11 @@ const Router = {
         Router.go(url);
       });
     });
+    window.addEventListener("popstate", (e) => {
+      if (e.state) {
+        Router.go(e.state.route, false);
+      }
+    });
     Router.go(location.pathname);
   },
   go: (route, addToHistory = true) => {
