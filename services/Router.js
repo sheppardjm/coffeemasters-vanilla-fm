@@ -30,6 +30,12 @@ const Router = {
         pageElement = document.createElement("order-page");
         pageElement.textContent = "Order";
         break;
+      default:
+        if (route.startsWith("/product-")) {
+          pageElement = document.createElement("details-page");
+          const paramId = route.substring(route.lastIndexOf("-") + 1);
+          pageElement.dataset.productId = paramId;
+        }
     }
     if (pageElement === null) {
       pageElement = document.createElement("h1");
